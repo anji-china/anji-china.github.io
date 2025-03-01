@@ -6,33 +6,35 @@
     <title>安吉·心 | 竹韵江南</title>
     <style>
         :root {
-            --primary: #5D8B6F;  /* 竹青色 */
-            --secondary: #B3C4B8;  /* 雾青色 */
-            --accent: #E0B084;  /* 茶褐色 */
+            --primary: #5D8B6F;   /* 竹韵青 */
+            --secondary: #A3B8A5; /* 远山黛 */
+            --accent: #D4C39E;   /* 茶芽黄 */
+            --text: #333333;      /* 正文黑 */
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'HarmonyOS Sans', 'PingFang SC', sans-serif;
+            font-family: 'HarmonyOS Sans SC', 'PingFang SC', sans-serif;
         }
 
         body {
-            background: #fcfaf6;
-            color: #333;
+            background: #fcfaf8;
+            color: var(--text);
+            line-height: 1.7;
         }
 
-        /* 新版导航 */
+        /* 增强版导航 */
         .master-header {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.2rem 5%;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(10px);
+            padding: 1rem 6%;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -41,9 +43,10 @@
         .brand {
             font-size: 1.8rem;
             font-weight: 600;
-            background: linear-gradient(45deg, var(--primary), #3A5F4B);
+            background: linear-gradient(135deg, var(--primary), #476A55);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 0.05em;
         }
 
         .nav-links {
@@ -55,13 +58,14 @@
             color: #666;
             text-decoration: none;
             position: relative;
+            padding: 0.5rem 0;
             transition: 0.3s;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
@@ -255,7 +259,7 @@
 
         <div class="feature-card">
             <div class="card-image">
-                <img src="https://img.picui.cn/free/2025/03/01/67c269d9ac778.png" alt="白茶">
+                <img src="https://img.picui.cn/free/2025/03/01/67c269d9ac778.png" alt="白茶（百度百科）">
             </div>
             <div class="card-body">
                 <h3 class="card-title">白茶原乡</h3>
