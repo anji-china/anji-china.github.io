@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安吉·心 | 绿水青山间的诗意栖居</title>
+    <style>
+        :root {
+            --primary: #5D8B6F;   /* 竹韵青 */
+            --secondary: #A3B8A5; /* 远山黛 */
+            --accent: #D4C39E;   /* 茶芽黄 */
+            --text: #333333;      /* 正文黑 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'HarmonyOS Sans SC', 'PingFang SC', sans-serif;
+        }
+
+        body {
+            background: #fcfaf8;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* 增强版导航 */
+        .master-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 6%;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary), #476A55);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 全屏放大区 */
+        .hero-section {
+            height: 100vh;
+            margin-top: 76px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.98) contrast(1.05);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            max-width: 1200px;
+            width: 90%;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* 内容分区 */
+        .content-section {
+            padding: 6rem 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 图文信息卡 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px -6px rgba(0,0,0,0.08);
+            transition: 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px -8px rgba(0,0,0,0.12);
+        }
+
+        .card-image {
+            height: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .info-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* 数据展示 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(var(--primary), 0.08);
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 页脚增强 */
+        .site-footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 8%;
+            text-align: center;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 2rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="master-header">
+        <div class="brand">安吉·心</div>
+        <nav class="nav-links">
+            <a href="index">首页</a>
+            <a href="about">安吉简介</a>
+            <a href="scenery">山水画廊（没做）</a>
+            <a href="culture">竹韵千年（没做）</a>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <img src="https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web3628/site/images/45032/cx_cut4.png" alt="安吉景色" class="hero-bg">
+        <div class="hero-content">
+            <h1 class="hero-title">竹海茶山入画来</h1>
+            <h4 class="hero-subtitle">长三角生态绿心 | 两山理念发源地 | 联合国人居奖首个获得县</h4>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">安吉四韵</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="card-image">
+                    <img src="https://img.picui.cn/free/2025/03/01/67c28884d6c61.jpg" alt="生态旅游（人民网）">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">生态旅游</h3>
+                    <p>拥有3个国家级自然保护区、5个4A级景区，年接待游客超2800万人次</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="card-image">
+                    <img src="https://www.cnbamboo.cn/images/swiperPic4.jpg" alt="竹文化">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">竹文化</h3>
+                    <p>中国十大竹乡之首，竹林面积108万亩，竹产品年产值超200亿元</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="card-image">
+                    <img src="https://img.picui.cn/free/2025/03/01/67c269d9ac778.png" alt="白茶产业（百度百科）">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">白茶产业</h3>
+                    <p>安吉白茶品牌价值达48.45亿元，带动10万茶农增收致富</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">75.1%</div>
+                <div>森林覆盖率</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1886</div>
+                <div>年平均负氧离子浓度</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div>非物质文化遗产</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">16</div>
+                <div>国家地理标志产品</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p>绿水青山就是金山银山。良好生态环境既是自然财富，也是经济财富，关系经济社会发展潜力和后劲。——习近平总书记</p>
+        <div class="disclaimer">
+            Anji.xin与安吉县人民政府没有附属关系、关联关系、授权、背书，也没有以任何方式正式联系。
+        </div>
+        <div style="margin-top: 2rem;">
+            © 2025 安吉·心 ｜ https://www.anji.xin
+        </div>
+    </footer>
+</body>
+
+</html>
