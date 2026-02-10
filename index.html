@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安吉·心 | 竹韵江南</title>
+    <style>
+        :root {
+            --primary: #5D8B6F;   /* 竹韵青 */
+            --secondary: #A3B8A5; /* 远山黛 */
+            --accent: #D4C39E;   /* 茶芽黄 */
+            --text: #333333;      /* 正文黑 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'HarmonyOS Sans SC', 'PingFang SC', sans-serif;
+        }
+
+        body {
+            background: #fcfaf8;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* 增强版导航 */
+        .master-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 6%;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary), #476A55);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 沉浸式大图 */
+        .hero-section {
+            height: 100vh;
+            margin-top: 76px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.96);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* 特色卡片 */
+        .feature-grid {
+            padding: 6rem 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            background: linear-gradient(to bottom, #f8f5f0, #ffffff);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px -6px rgba(0,0,0,0.05);
+            transition: 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px -8px rgba(0,0,0,0.1);
+        }
+
+        .card-image {
+            height: 160px;
+            background: #eee;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .feature-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* 页脚设计 */
+        .site-footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 8%;
+            text-align: center;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 2rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .master-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="master-header">
+        <div class="brand">安吉·心</div>
+        <nav class="nav-links">
+            <a href="index">首页</a>
+            <a href="about">安吉简介</a>
+            <a href="scenery">山水画廊</a>
+            <a href="culture">竹韵千年</a>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <img src="https://zjjcmspublic.oss-cn-hangzhou-zwynet-d01-a.internet.cloud.zj.gov.cn/jcms_files/jcms1/web3628/site/images/45032/cx_cut1.png" alt="安吉全景" class="hero-bg">
+        <div class="hero-overlay">
+            <h1 class="hero-title">山水入墨 竹海成诗</h1>
+            <h4>安吉之美，世界之最——联合国人居奖荣誉之县</h4>
+        </div>
+    </section>
+
+    <section class="feature-grid">
+        <div class="feature-card">
+            <div class="card-image">
+                <img src="https://app.huzhou.gov.cn//DFS//file/2018/08/03/201808030947190067763hi.jpg" alt="竹海秘境">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">竹海听涛</h3>
+                <p>中国大竹海连绵百万亩。</p>
+                <p>「竹径通幽处，禅房花木深。」</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="card-image">
+                <img src="https://custom.huzhou.gov.cn/DFS/wordimp/nbb/c57943/i3299432/image6.jpeg" alt="云野幻境">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">云野幻境</h3>
+                <p>浙北巅峰之上的云上草原</p>
+                <p>「苍茫云海拂衣过，星河触手揽入怀」</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="card-image">
+                <img src="https://custom.huzhou.gov.cn/DFS/wordimp/nbb/c57943/i3299432/image4.jpeg" alt="江南天池">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">天池胜境</h3>
+                <p>既是海拔千米的高山平湖</p>
+                <p>也是星空露营的绝佳去处</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="card-image">
+                <img src="https://www.znc.cn/upload/20161220/14822000186010557.JPG" alt="中南百草园">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">百草秘境</h3>
+                <p>有千种珍稀草木繁盛的中南百草园</p>
+                <p>「鸟鸣深涧藏灵韵，鹿影疏林映翠微」</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="card-image">
+                <img src="https://img.picui.cn/free/2025/03/01/67c269d9ac778.png" alt="白茶（百度百科）">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">白茶原乡</h3>
+                <p>安吉白茶生长黄金带</p>
+                <p>「千年茶史浸润的东方树叶」</p>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <div class="card-image">
+                <img src="https://www.cnbamboo.cn/images/swiperPic1.jpg" alt="安吉竹博园">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">竹韵千年</h3>
+                <p>既是竹文化的活态博物馆</p>
+                <p>也是东方美学的静谧归处</p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="site-footer">
+        <p>绿水青山就是金山银山。良好生态环境既是自然财富，也是经济财富，关系经济社会发展潜力和后劲。——习近平总书记</p>
+        <div class="disclaimer">
+            Anji.xin与安吉县人民政府没有附属关系、关联关系、授权、背书，也没有以任何方式正式联系。
+        </div>
+        <div style="margin-top: 2rem;">
+            © 2025 安吉·心 ｜ https://www.anji.xin
+        </div>
+    </footer>
+</body>
+
+</html>
